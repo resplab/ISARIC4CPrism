@@ -72,3 +72,23 @@ flatten_list<-function(lst,prefix="")
   }
   return(out)
 }
+
+#Gets a hierarchical named list and flattens it; updating names accordingly
+unflatten_list <- function(lst)
+{
+  if (is.null(lst))
+    return(lst)
+  out <- list()
+
+  nms <- names(lst)
+
+  for (nm in nms)
+  {
+    path <- paste(strsplit(nm, '.', fixed = T)[[1]], sep = "$")
+    eval(parse(text = paste(
+      "out$", paste(path, collapse = "$"), "<-lst[[nm]]", sep = ""
+    )))
+  }
+
+  return(out)
+}
