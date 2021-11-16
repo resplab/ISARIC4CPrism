@@ -42,6 +42,21 @@ model_run<-function(model_input = NULL)
 }
 
 
+prism_get_default_input <- function() {
+  model_input <- list(nosocomial = 1, 
+                      sex = 1, 
+                      radiographic_chest_infiltrates = 1, 
+                      receiving_oxygen = 1, 
+                      glasgow_coma_scale = 15, 
+                      age = 23, 
+                      respiratory_rate = 50,
+                      admission_oxygen_saturation = 51,
+                      urea = 21, 
+                      crp = 32, 
+                      lymphocytes = 32, 
+                      func = 1 )
+  return((flatten_list(model_input)))
+}
 
 
 #Gets a hierarchical named list and flattens it; updating names accordingly
